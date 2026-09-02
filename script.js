@@ -7,29 +7,28 @@ const CONFIG = {
   password: '08092024',
   husband: 'Husband',
   years: 2,
-  wife: 'Wife', // <- replace with her name if you want
+  wife: 'Wife',
 };
 
-// Replace these placeholders with your real memories.
 const memories = {
   'our-first-date': {
     title: 'Our First Date',
-    text: 'Your first-date story goes here. Add the details only the two of you remember. 💚',
+    text: 'REPLACE THIS with your first-date story: where you went, what happened, the funniest moment, and one tiny detail only the two of you remember.',
     images: [
-      'images/6822-gk-park-montana-4.jpeg',
-      'images/hookah-with-fume-on-dark_392895-21378.avif',
+      'images/6822-gk-park-montana-4.jpg',
+      'images/hookah-with-fume-on-dark_392895-21378.jpg',
     ],
   },
   'our-first-trip': {
     title: 'Our First Trip',
-    text: 'Your first-trip story goes here. Destination, adventures, chaos and the best memories. ✈️',
+    text: 'REPLACE THIS with the story of your first trip together — destination, inside jokes, chaos, and the moment you realized this was your favorite travel partner.',
     images: [
       'images/photo_2026-09-02 17.53.51.jpeg',
     ],
   },
   'favorite-memories': {
     title: 'Favorite Memories',
-    text: 'A collection of favorite moments from the relationship backlog. ❤️',
+    text: 'REPLACE THIS with 3–5 short memories. Keep them specific. The more absurdly personal, the better.',
     images: [
       'images/photo_2026-09-02 17.55.29.jpeg',
       'images/photo_2026-09-02 17.55.30.jpeg',
@@ -38,11 +37,11 @@ const memories = {
   },
   'future-plans': {
     title: 'Future Plans',
-    text: 'The adventures, dreams and deployments still waiting in the backlog. 🚀',
+    text: 'REPLACE THIS with the adventures still waiting in the backlog: places to visit, things to build, foods to try, dreams to deploy.',
     images: [
-      'images/MyCollages-2023-02-20T165309.983.jpeg',
+      'images/MyCollages-2023-02-20T165309.983.jpg',
       'images/photo_2026-09-02 17.57.21.jpeg',
-      'images/IMMIGRATION-LAWYER-HELP-768x512.jpeg',
+      'images/IMMIGRATION-LAWYER-HELP-768x512.jpg',
     ],
   },
 };
@@ -50,11 +49,11 @@ const memories = {
 
 const foods = [
   { label: 'burger', emoji: '🍔', correct: true },
-  { label: 'sushi', emoji: '🍣', correct: true },
-  { label: 'pepsi', emoji: '🥤', correct: true },
   { label: 'gorgonzola', emoji: '🧀', correct: false },
   { label: 'liver', emoji: '🥩', correct: false },
+  { label: 'sushi', emoji: '🍣', correct: true },
   { label: 'cola', emoji: '🥤', correct: false },
+  { label: 'pepsi', emoji: '🥤', correct: true },
 ];
 
 
@@ -173,15 +172,24 @@ function showMemory(key) {
   apiVisited.add(key);
   document.querySelectorAll('.endpoint').forEach((button) => button.classList.toggle('active', button.dataset.endpoint === key));
   const card = document.getElementById('memoryCard');
+  const photos = item.images?.length
+    ? `<div class="memory-photos">${item.images.map((src, index) => `
+        <figure class="memory-photo">
+          <img src="${src}" alt="${item.title} photo ${index + 1}" loading="lazy" />
+          <figcaption>PHOTO_${String(index + 1).padStart(2, '0')} // MEMORY DATA</figcaption>
+        </figure>`).join('')}</div>`
+    : '';
+
   card.innerHTML = `
     <div class="memory-meta">200 OK // GET /${key}</div>
     <div class="memory-title">${item.title}</div>
     <div class="memory-text">${item.text}</div>
-    <div class="memory-photos">${item.images.map((src, index) => `<figure class="memory-photo"><img src="${src}" alt="${item.title} photo ${index + 1}" loading="lazy" /><figcaption>PHOTO_${String(index + 1).padStart(2, '0')} // MEMORY DATA</figcaption></figure>`).join('')}</div>
+    ${photos}
   `;
   const continueBtn = document.getElementById('apiContinueBtn');
   continueBtn.disabled = apiVisited.size < 4;
 }
+
 
 document.querySelectorAll('.endpoint').forEach((button) => {
   button.addEventListener('click', () => showMemory(button.dataset.endpoint));
