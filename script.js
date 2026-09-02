@@ -4,7 +4,7 @@
 // ============================================================
 
 const CONFIG = {
-  password: '25072021',
+  password: '08092024',
   husband: 'Husband',
   years: 2,
   wife: 'Wife', // <- replace with her name if you want
@@ -14,37 +14,49 @@ const CONFIG = {
 const memories = {
   'our-first-date': {
     title: 'Our First Date',
-    text: 'REPLACE THIS with your first-date story: where you went, what happened, the funniest moment, and one tiny detail only the two of you remember.',
-    image: 'assets/first-date.jpg',
+    text: 'Your first-date story goes here. Add the details only the two of you remember. 💚',
+    images: [
+      'images/6822-gk-park-montana-4.jpeg',
+      'images/hookah-with-fume-on-dark_392895-21378.avif',
+    ],
   },
   'our-first-trip': {
     title: 'Our First Trip',
-    text: 'REPLACE THIS with the story of your first trip together — destination, inside jokes, chaos, and the moment you realized this was your favorite travel partner.',
-    image: 'assets/first-trip.jpg',
+    text: 'Your first-trip story goes here. Destination, adventures, chaos and the best memories. ✈️',
+    images: [
+      'images/photo_2026-09-02 17.53.51.jpeg',
+    ],
   },
   'favorite-memories': {
     title: 'Favorite Memories',
-    text: 'REPLACE THIS with 3–5 short memories. Keep them specific. The more absurdly personal, the better.',
-    image: 'assets/favorite-memory.jpg',
+    text: 'A collection of favorite moments from the relationship backlog. ❤️',
+    images: [
+      'images/photo_2026-09-02 17.55.29.jpeg',
+      'images/photo_2026-09-02 17.55.30.jpeg',
+      'images/photo_2026-09-02 17.55.31.jpeg',
+    ],
   },
   'future-plans': {
     title: 'Future Plans',
-    text: 'REPLACE THIS with the adventures still waiting in the backlog: places to visit, things to build, foods to try, dreams to deploy.',
-    image: 'assets/future-plans.jpg',
+    text: 'The adventures, dreams and deployments still waiting in the backlog. 🚀',
+    images: [
+      'images/MyCollages-2023-02-20T165309.983.jpeg',
+      'images/photo_2026-09-02 17.57.21.jpeg',
+      'images/IMMIGRATION-LAWYER-HELP-768x512.jpeg',
+    ],
   },
 };
 
+
 const foods = [
   { label: 'burger', emoji: '🍔', correct: true },
-  { label: 'gorgonzola', emoji: '🧀', correct: true },
-  { label: 'liver', emoji: '🥩', correct: true },
   { label: 'sushi', emoji: '🍣', correct: true },
-  { label: 'cola', emoji: '🥤', correct: true },
   { label: 'pepsi', emoji: '🥤', correct: true },
-  { label: 'broccoli', emoji: '🥦', correct: false },
-  { label: 'olives', emoji: '🫒', correct: false },
-  { label: 'oatmeal', emoji: '🥣', correct: false },
+  { label: 'gorgonzola', emoji: '🧀', correct: false },
+  { label: 'liver', emoji: '🥩', correct: false },
+  { label: 'cola', emoji: '🥤', correct: false },
 ];
+
 
 let currentScreen = 'level-start';
 let apiVisited = new Set();
@@ -165,7 +177,7 @@ function showMemory(key) {
     <div class="memory-meta">200 OK // GET /${key}</div>
     <div class="memory-title">${item.title}</div>
     <div class="memory-text">${item.text}</div>
-    <div class="memory-photo">📷 Add photo: <code>${item.image}</code></div>
+    <div class="memory-photos">${item.images.map((src, index) => `<figure class="memory-photo"><img src="${src}" alt="${item.title} photo ${index + 1}" loading="lazy" /><figcaption>PHOTO_${String(index + 1).padStart(2, '0')} // MEMORY DATA</figcaption></figure>`).join('')}</div>
   `;
   const continueBtn = document.getElementById('apiContinueBtn');
   continueBtn.disabled = apiVisited.size < 4;
