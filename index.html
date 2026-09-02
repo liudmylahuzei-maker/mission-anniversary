@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050807" />
+  <meta name="description" content="Mission Anniversary v2.0 — a private marriage deployment mission." />
+  <title>Mission Anniversary v2.0 ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scanlines"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span>mission-anniversary.local</span></div>
+      <div class="top-status">SYSTEM STATUS: <span>STABLE ❤️</span></div>
+    </header>
+
+    <section id="level-start" class="screen active">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">PRIVATE DEPLOYMENT // 2026</div>
+          <h1>Mission<br /><span>Anniversary v2.0</span></h1>
+          <p class="lede">A highly classified QA mission for one very specific husband.</p>
+          <div class="terminal-card">
+            <div class="terminal-row"><span>SYSTEM STATUS</span><b class="ok">STABLE ❤️</b></div>
+            <div class="terminal-row"><span>UPTIME</span><b>2 years</b></div>
+            <div class="terminal-row"><span>BUGS FIXED</span><b>∞</b></div>
+            <div class="terminal-row"><span>DEPLOYMENTS TOGETHER</span><b>∞</b></div>
+            <div class="terminal-row"><span>CURRENT VERSION</span><b>US v2.0</b></div>
+          </div>
+          <button class="primary-btn" data-go="auth">START MISSION <span>→</span></button>
+        </div>
+        <div class="heart-visual" aria-hidden="true">
+          <div class="heart-orbit orbit-1"></div>
+          <div class="heart-orbit orbit-2"></div>
+          <div class="heart-core">♥</div>
+          <div class="floating-code code-1">LOVE++</div>
+          <div class="floating-code code-2">NO_ROLLBACK</div>
+          <div class="floating-code code-3">FOREVER=true</div>
+        </div>
+      </div>
+      <div class="footer-note">// forged with love, caffeine &amp; suspiciously many test cases</div>
+    </section>
+
+    <section id="level-auth" class="screen">
+      <div class="level-header">
+        <div class="level-number">01</div>
+        <div><div class="eyebrow">LEVEL 01</div><h2>AUTHENTICATION</h2></div>
+      </div>
+      <div class="content-grid auth-grid">
+        <div>
+          <p class="big-copy">Authentication required.<br /><span>Enter the date when the production environment was deployed.</span></p>
+          <div class="form-stack">
+            <label>USERNAME</label>
+            <input value="Husband" readonly />
+            <label>PASSWORD</label>
+            <input id="passwordInput" type="password" inputmode="numeric" autocomplete="off" placeholder="DDMMYYYY" maxlength="8" />
+            <button class="primary-btn" id="authBtn">AUTHENTICATE <span>→</span></button>
+            <div id="authMessage" class="message" role="status"></div>
+          </div>
+        </div>
+        <div class="side-panel">
+          <div class="panel-title">AUTH SERVICE</div>
+          <pre>POST /auth/husband
+
+{
+  "username": "Husband",
+  "password": "????????"
+}
+
+→ waiting for credentials...</pre>
+          <div class="tiny-warning">Unauthorized access will be judged personally. 😈</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="level-captcha" class="screen">
+      <div class="level-header">
+        <div class="level-number">02</div>
+        <div><div class="eyebrow">LEVEL 02</div><h2>CAPTCHA</h2></div>
+      </div>
+      <div class="captcha-wrap">
+        <div class="captcha-head">
+          <div>
+            <div class="big-copy">“Докажи, что ты мой муж”</div>
+            <p>Select all images containing food my husband loves.</p>
+          </div>
+          <div class="captcha-badge">I'M NOT A ROBOT<br /><span>probably</span></div>
+        </div>
+        <div id="foodGrid" class="food-grid"></div>
+        <button class="primary-btn" id="captchaBtn">VERIFY <span>→</span></button>
+        <div id="captchaMessage" class="message" role="status"></div>
+      </div>
+    </section>
+
+    <section id="level-api" class="screen">
+      <div class="level-header">
+        <div class="level-number">03</div>
+        <div><div class="eyebrow">LEVEL 03</div><h2>API TESTING</h2></div>
+      </div>
+      <div class="api-layout">
+        <div class="request-panel">
+          <div class="request-heading"><span class="method post">POST</span><span>/marriage/love</span></div>
+          <pre id="postRequest" class="code-block"></pre>
+          <button class="primary-btn" id="runPostBtn">SEND REQUEST <span>→</span></button>
+          <div id="postResponse" class="response-block hidden"></div>
+        </div>
+        <div class="endpoint-panel">
+          <div class="panel-title">ENDPOINTS</div>
+          <button class="endpoint active" data-endpoint="our-first-date"><span class="method get">GET</span><span>/our-first-date</span><b>›</b></button>
+          <button class="endpoint" data-endpoint="our-first-trip"><span class="method get">GET</span><span>/our-first-trip</span><b>›</b></button>
+          <button class="endpoint" data-endpoint="favorite-memories"><span class="method get">GET</span><span>/favorite-memories</span><b>›</b></button>
+          <button class="endpoint" data-endpoint="future-plans"><span class="method get">GET</span><span>/future-plans</span><b>›</b></button>
+        </div>
+      </div>
+      <div id="memoryCard" class="memory-card"></div>
+      <button class="primary-btn continue-btn" id="apiContinueBtn" disabled>CONTINUE TO FINAL BOSS <span>→</span></button>
+    </section>
+
+    <section id="level-final" class="screen">
+      <div class="level-header">
+        <div class="level-number">04</div>
+        <div><div class="eyebrow">LEVEL 04</div><h2>FINAL BOSS</h2></div>
+      </div>
+      <div class="final-box">
+        <div class="final-title">FINAL SYSTEM CHECK</div>
+        <div class="checks">
+          <div><span>Marriage</span><b>PASS</b></div>
+          <div><span>Love</span><b>PASS</b></div>
+          <div><span>Trust</span><b>PASS</b></div>
+          <div><span>Memories</span><b>PASS</b></div>
+          <div><span>Adventures</span><b>PASS</b></div>
+          <div><span>Future</span><b>PASS</b></div>
+        </div>
+        <div class="system-progress"><div id="finalProgress"></div></div>
+        <div class="system-label"><span>SYSTEM STATUS:</span><b>100%</b></div>
+        <div class="marriage-status">MARRIAGE: <span>STABLE</span></div>
+        <p class="one-final">One final deployment is required.</p>
+        <button class="primary-btn giant" id="deployBtn">DEPLOY OUR NEXT YEAR <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="level-deployed" class="screen">
+      <div class="deployed-screen">
+        <div class="rocket" aria-hidden="true">🚀</div>
+        <div class="eyebrow">DEPLOYMENT PIPELINE</div>
+        <h2>Deploying<span class="ellipsis">...</span></h2>
+        <div id="deployLog" class="deploy-log"></div>
+        <div class="final-message hidden" id="finalMessage">
+          <div class="love-glow">❤️</div>
+          <h1>MARRIAGE vNEXT<br /><span>DEPLOYED</span></h1>
+          <p>There is no rollback.<br />There is no end date.<br /><strong>We're in this together.</strong></p>
+          <div class="version-stamp">VERSION: FOREVER</div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="progress-nav" aria-label="Mission progress">
+      <button data-target="level-start" class="nav-dot active"><span>START</span></button>
+      <button data-target="level-auth" class="nav-dot"><span>01</span></button>
+      <button data-target="level-captcha" class="nav-dot"><span>02</span></button>
+      <button data-target="level-api" class="nav-dot"><span>03</span></button>
+      <button data-target="level-final" class="nav-dot"><span>04</span></button>
+    </nav>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
