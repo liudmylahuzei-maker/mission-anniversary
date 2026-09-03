@@ -32,7 +32,7 @@ const memories = {
     images: [
       'images/photo_2026-09-02 17.55.29.jpeg',
       'images/photo_2026-09-02 17.55.30.jpeg',
-      'images/photo_2026-09-02 17.55.31.jpeg',
+      'images/photo_2026-09-02 new.jpeg',
     ],
   },
   'future-plans': {
