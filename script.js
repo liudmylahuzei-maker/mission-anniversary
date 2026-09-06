@@ -32,7 +32,7 @@ const memories = {
     images: [
       'images/photo_2026-09-02 17.55.29.jpeg',
       'images/photo_2026-09-02 17.55.30.jpeg',
-      'images/photo_2026-09-02 new.jpeg',
+      'images/photo_2026-09-02 17.55.31.jpeg',
     ],
   },
   'future-plans': {
@@ -197,44 +197,113 @@ document.querySelectorAll('.endpoint').forEach((button) => {
 
 document.getElementById('apiContinueBtn').addEventListener('click', () => goTo('level-final'));
 
+document.getElementById('deployBtn').addEventListener('click', () => goTo('level-wife'));
+
+// WIFE SYSTEM DIAGNOSTICS
+const wifeAnswers = {
+  1: ['B'],
+  2: ['A', 'C'],
+  3: ['A', 'B', 'C'],
+};
+const wifePassed = new Set();
+
+function getSelected(question) {
+  return [...document.querySelectorAll(`input[name=\"q${question}\"]:checked`)]
+    .map((input) => input.value)
+    .sort();
+}
+
+function arraysEqual(a, b) {
+  return a.length === b.length && a.every((value, index) => value === b[index]);
+}
+
+function runWifeAssertion(question) {
+  const selected = getSelected(question);
+  const expected = [...wifeAnswers[question]].sort();
+  const message = document.getElementById(`q${question}Message`);
+
+  if (arraysEqual(selected, expected)) {
+    wifePassed.add(question);
+    message.className = 'assertion-message passed';
+    message.innerHTML = '✓ ASSERTION PASSED';
+  } else {
+    wifePassed.delete(question);
+    message.className = 'assertion-message failed';
+    message.innerHTML = '✗ WRONG ANSWER<br /><span>Expected: Husband should know this. 😄</span>';
+  }
+
+  document.getElementById('wifeProgress').textContent = `${wifePassed.size} / 3 ASSERTIONS PASSED`;
+  document.getElementById('giftApiBtn').disabled = wifePassed.size !== 3;
+}
+
+document.querySelectorAll('.question-btn').forEach((button) => {
+  button.addEventListener('click', () => runWifeAssertion(Number(button.dataset.question)));
+});
+
+const giftApiBtn = document.getElementById('giftApiBtn');
+const giftApi = document.getElementById('giftApi');
+const giftResponse = document.getElementById('giftResponse');
+const clueBox = document.getElementById('clueBox');
+const clueText = document.getElementById('clueText');
+const nextClueBtn = document.getElementById('nextClueBtn');
+const finalClue = document.getElementById('finalClue');
+const giftReveal = document.getElementById('giftReveal');
+const continueDeployBtn = document.getElementById('continueDeployBtn');
+const clues = [
+  'It happens above ground.',
+  "You don't need an engine.",
+  'You will have to trust someone else.',
+];
+let clueIndex = 0;
+
+giftApiBtn.addEventListener('click', () => {
+  giftApiBtn.disabled = true;
+  giftApi.classList.remove('hidden');
+  setTimeout(() => {
+    giftResponse.classList.remove('hidden');
+    giftResponse.textContent = JSON.stringify({
+      status: 200,
+      gift: '???',
+      type: 'experience',
+      duration: '???',
+      location: '???',
+      fear_level: 'HIGH',
+      memories_generated: '∞',
+    }, null, 2);
+    setTimeout(() => {
+      clueBox.classList.remove('hidden');
+      showClue();
+    }, 850);
+  }, 1300);
+});
+
+function showClue() {
+  clueText.textContent = clues[clueIndex];
+  nextClueBtn.textContent = clueIndex === clues.length - 1 ? 'REVEAL FINAL CLUE →' : 'NEXT CLUE →';
+}
+
+nextClueBtn.addEventListener('click', () => {
+  if (clueIndex < clues.length - 1) {
+    clueIndex += 1;
+    showClue();
+  } else {
+    clueBox.classList.add('hidden');
+    finalClue.classList.remove('hidden');
+    setTimeout(() => {
+      finalClue.classList.add('hidden');
+      giftReveal.classList.remove('hidden');
+    }, 1800);
+  }
+});
+
+continueDeployBtn.addEventListener('click', () => goTo('level-deployed'));
+
+
+
 // FINAL DEPLOYMENT
 const deployBtn = document.getElementById('deployBtn');
 const finalProgress = document.getElementById('finalProgress');
 const deployLog = document.getElementById('deployLog');
 const finalMessage = document.getElementById('finalMessage');
 
-deployBtn.addEventListener('click', () => {
-  goTo('level-deployed');
-  finalProgress.style.width = '100%';
-  deployBtn.disabled = true;
-
-  const lines = [
-    '🚀 Deploying...',
-    'Uploading memories... ✓',
-    'Uploading adventures... ✓',
-    'Uploading kisses... ✓',
-    'Uploading dreams... ✓',
-    'Uploading love... ✓',
-    '',
-    '❤️ MARRIAGE vNEXT DEPLOYED',
-  ];
-
-  deployLog.innerHTML = '';
-  let index = 0;
-  const timer = setInterval(() => {
-    const line = lines[index];
-    const row = document.createElement('div');
-    row.textContent = line;
-    deployLog.appendChild(row);
-    index += 1;
-    if (index >= lines.length) {
-      clearInterval(timer);
-      setTimeout(() => {
-        deployLog.classList.add('hidden');
-        finalMessage.classList.remove('hidden');
-      }, 700);
-    }
-  }, 420);
-});
-
-// Start with a subtle seeded first screen; no personal data appears until the mission begins.
+// Final deployment is triggered from Level 05 after the gift reveal.

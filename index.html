@@ -137,7 +137,96 @@
         <div class="system-label"><span>SYSTEM STATUS:</span><b>100%</b></div>
         <div class="marriage-status">MARRIAGE: <span>STABLE</span></div>
         <p class="one-final">One final deployment is required.</p>
-        <button class="primary-btn giant" id="deployBtn">DEPLOY OUR NEXT YEAR <span>→</span></button>
+        <button class="primary-btn giant" id="deployBtn">CONTINUE TO WIFE DIAGNOSTICS <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="level-wife" class="screen">
+      <div class="level-header">
+        <div class="level-number">05</div>
+        <div><div class="eyebrow">LEVEL 05</div><h2>WIFE SYSTEM DIAGNOSTICS</h2></div>
+      </div>
+
+      <div class="wife-intro final-box">
+        <div class="terminal-sequence">
+          <div>ALL SYSTEMS PASSED.</div>
+          <div>Marriage v2.0 is ready for deployment.</div>
+          <div class="sequence-gap">WAIT...</div>
+          <div class="warning-line">One additional dependency detected.</div>
+        </div>
+      </div>
+
+      <div id="wifeTest" class="wife-test">
+        <div class="test-title">🧪 WIFE COMPATIBILITY TEST</div>
+        <div class="test-progress"><span id="wifeProgress">0 / 3 ASSERTIONS PASSED</span></div>
+
+        <div class="wife-question" data-question="1">
+          <div class="question-label">Q1. What is Wife's default response when Husband says: <span>"Let's go somewhere this weekend"?</span></div>
+          <label class="answer-option"><input type="radio" name="q1" value="A"> <span>A. Absolutely not</span></label>
+          <label class="answer-option"><input type="radio" name="q1" value="B"> <span>B. Where are we going? 👀</span></label>
+          <label class="answer-option"><input type="radio" name="q1" value="C"> <span>C. I want to stay at home</span></label>
+          <button class="secondary-btn question-btn" data-question="1">RUN ASSERTION</button>
+          <div class="assertion-message" id="q1Message"></div>
+        </div>
+
+        <div class="wife-question" data-question="2">
+          <div class="question-label">Q2. What makes Wife happiest?</div>
+          <div class="multi-note">Select all correct answers. There is more than one correct answer.</div>
+          <label class="answer-option"><input type="checkbox" name="q2" value="A"> <span>A. Flowers</span></label>
+          <label class="answer-option"><input type="checkbox" name="q2" value="B"> <span>B. New tech</span></label>
+          <label class="answer-option"><input type="checkbox" name="q2" value="C"> <span>C. Jewellery</span></label>
+          <label class="answer-option"><input type="checkbox" name="q2" value="D"> <span>D. Socks</span></label>
+          <button class="secondary-btn question-btn" data-question="2">RUN ASSERTION</button>
+          <div class="assertion-message" id="q2Message"></div>
+        </div>
+
+        <div class="wife-question" data-question="3">
+          <div class="question-label">Q3. What is Wife's favorite type of gift?</div>
+          <div class="multi-note">Select all correct answers. There is more than one correct answer.</div>
+          <label class="answer-option"><input type="checkbox" name="q3" value="A"> <span>A. Something useful</span></label>
+          <label class="answer-option"><input type="checkbox" name="q3" value="B"> <span>B. Something expensive</span></label>
+          <label class="answer-option"><input type="checkbox" name="q3" value="C"> <span>C. Something we will remember forever</span></label>
+          <label class="answer-option"><input type="checkbox" name="q3" value="D"> <span>D. My wife doesn't like gifts</span></label>
+          <button class="secondary-btn question-btn" data-question="3">RUN ASSERTION</button>
+          <div class="assertion-message" id="q3Message"></div>
+        </div>
+
+        <button class="primary-btn continue-btn" id="giftApiBtn" disabled>EXECUTE GIFT REQUEST <span>→</span></button>
+      </div>
+
+      <div id="giftApi" class="gift-api hidden">
+        <div class="api-terminal">
+          <div class="api-status-line">WIFE SYSTEM <b>VALIDATED ✓</b></div>
+          <div class="api-status-line">HUSBAND KNOWLEDGE <b>98%</b></div>
+          <div class="api-status-line">RELATIONSHIP COMPATIBILITY <b>∞%</b></div>
+          <div class="api-status-line">SURPRISE GIFT <b>READY</b></div>
+        </div>
+        <div class="request-heading"><span class="method post">POST</span><span>/gift/reveal</span></div>
+        <pre id="giftRequest" class="code-block">POST /gift/reveal
+
+Processing...
+████████████████████ 100%</pre>
+        <div id="giftResponse" class="response-block hidden"></div>
+      </div>
+
+      <div id="clueBox" class="clue-box hidden">
+        <div class="clue-meta">GIFT REVEAL // CLASSIFIED</div>
+        <div id="clueText" class="clue-text"></div>
+        <button class="primary-btn" id="nextClueBtn">NEXT CLUE <span>→</span></button>
+      </div>
+
+      <div id="finalClue" class="final-clue hidden">
+        <div class="clue-meta">FINAL CLUE</div>
+        <div class="final-clue-text">Look up.<br /><span>Not at the screen.</span><br />At the sky. ☁️</div>
+      </div>
+
+      <div id="giftReveal" class="gift-reveal hidden">
+        <div class="paraglider-icon">🪂</div>
+        <div class="eyebrow">GIFT DEPLOYMENT COMPLETE</div>
+        <h1>PARAGLIDING</h1>
+        <p>Your anniversary gift is an adventure for two.</p>
+        <a class="pdf-link" href="Activities.pdf" target="_blank" rel="noopener">📄 OPEN YOUR GIFT DETAILS (PDF)</a>
+        <button class="primary-btn giant" id="continueDeployBtn">CONTINUE TO DEPLOYMENT <span>→</span></button>
       </div>
     </section>
 
@@ -162,6 +251,7 @@
       <button data-target="level-captcha" class="nav-dot"><span>02</span></button>
       <button data-target="level-api" class="nav-dot"><span>03</span></button>
       <button data-target="level-final" class="nav-dot"><span>04</span></button>
+      <button data-target="level-wife" class="nav-dot"><span>05</span></button>
     </nav>
   </main>
   <script src="script.js"></script>

@@ -160,3 +160,50 @@ pre { margin: 0; white-space: pre-wrap; color: #b5cfbc; line-height: 1.75; font-
   .progress-nav { width: calc(100% - 28px); justify-content: space-between; }
   .nav-dot { padding-inline: 8px; }
 }
+
+/* LEVEL 05 — WIFE SYSTEM DIAGNOSTICS */
+.wife-intro { max-width: 900px; margin: 0 auto 22px; padding: 24px; }
+.terminal-sequence { color: var(--green); line-height: 1.9; font-size: 14px; }
+.terminal-sequence .sequence-gap { margin-top: 18px; color: var(--muted); }
+.terminal-sequence .warning-line { color: #e5b85a; margin-top: 6px; }
+.wife-test { max-width: 900px; margin: 0 auto; padding: 26px; border: 1px solid var(--line); border-radius: 14px; background: rgba(8,14,10,.8); }
+.test-title { font-size: 18px; color: var(--white); margin-bottom: 10px; }
+.test-progress { color: var(--green); font-size: 10px; letter-spacing: .12em; margin-bottom: 24px; }
+.wife-question { padding: 22px 0; border-top: 1px dashed var(--line); }
+.question-label { font-size: 15px; line-height: 1.6; margin-bottom: 8px; }
+.question-label span { color: var(--green); }
+.multi-note { color: var(--muted); font-size: 11px; margin-bottom: 12px; }
+.answer-option { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin: 6px 0; border: 1px solid transparent; border-radius: 9px; color: #b9cdbf; cursor: pointer; }
+.answer-option:hover { border-color: var(--line); background: #070d09; }
+.answer-option input { width: 17px; height: 17px; flex: 0 0 auto; padding: 0; accent-color: var(--green); }
+.secondary-btn { margin-top: 12px; border: 1px solid var(--line); background: #08100b; color: var(--green); padding: 10px 13px; border-radius: 8px; font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+.secondary-btn:hover { border-color: var(--green-dim); }
+.assertion-message { min-height: 38px; padding-top: 12px; font-size: 12px; line-height: 1.7; }
+.assertion-message.passed { color: var(--green); }
+.assertion-message.failed { color: var(--red); }
+.assertion-message.failed span { color: #b08e4c; }
+.gift-api { max-width: 900px; margin: 22px auto 0; padding: 26px; border: 1px solid var(--line); border-radius: 14px; background: #060c08; }
+.api-terminal { margin-bottom: 24px; }
+.api-status-line { display: flex; justify-content: space-between; gap: 20px; padding: 11px 0; border-bottom: 1px dashed var(--line); color: var(--muted); font-size: 12px; }
+.api-status-line b { color: var(--green); }
+.gift-api .code-block { min-height: 110px; }
+.gift-api .response-block { color: var(--green); }
+.clue-box, .final-clue, .gift-reveal { max-width: 900px; margin: 22px auto 0; padding: 34px; border: 1px solid var(--line); border-radius: 14px; text-align: center; background: rgba(8,14,10,.88); }
+.clue-meta { color: var(--muted); font-size: 10px; letter-spacing: .2em; margin-bottom: 20px; }
+.clue-text { font-size: clamp(24px, 4vw, 38px); line-height: 1.4; color: var(--white); min-height: 58px; }
+.final-clue { padding: 48px 30px; animation: clueFlash .5s ease-out; }
+.final-clue-text { font-size: clamp(28px, 5vw, 52px); line-height: 1.45; color: var(--green); }
+.final-clue-text span { color: var(--muted); }
+@keyframes clueFlash { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: scale(1); } }
+.gift-reveal { padding: 48px 30px; }
+.paraglider-icon { font-size: 76px; animation: pulse 1.8s ease-in-out infinite; }
+.gift-reveal h1 { font-size: clamp(48px, 9vw, 90px); margin: 8px 0; color: var(--pink); text-shadow: 0 0 30px rgba(255,118,147,.2); }
+.gift-reveal p { color: var(--muted); font-size: 15px; }
+.pdf-link { display: inline-block; margin-top: 18px; color: var(--green); border: 1px solid var(--green-dim); padding: 11px 14px; border-radius: 9px; font-size: 11px; letter-spacing: .06em; text-decoration: none; }
+.pdf-link:hover { background: rgba(140,255,174,.06); }
+.gift-reveal .primary-btn { margin: 28px auto 0; }
+
+@media (max-width: 850px) {
+  .wife-test, .gift-api, .clue-box, .final-clue, .gift-reveal { padding: 22px; }
+  .api-status-line { flex-direction: column; gap: 5px; }
+}
