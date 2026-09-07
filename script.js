@@ -306,13 +306,6 @@ nextClueBtn.addEventListener('click', () => {
   }
 });
 
-continueDeployBtn.addEventListener('click', () => {
-  missionState.deployed = true;
-  goTo('level-deployed');
-});
-
-
-
 // FINAL DEPLOYMENT
 const finalProgress = document.getElementById('finalProgress');
 const deployLog = document.getElementById('deployLog');
