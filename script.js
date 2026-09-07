@@ -319,4 +319,38 @@ const finalProgress = document.getElementById('finalProgress');
 const deployLog = document.getElementById('deployLog');
 const finalMessage = document.getElementById('finalMessage');
 
-// Final deployment is triggered from Level 05 after the gift reveal.
+deployBtn.addEventListener('click', () => {
+  goTo('level-deployed');
+  finalProgress.style.width = '100%';
+  deployBtn.disabled = true;
+
+  const lines = [
+    '🚀 Deploying...',
+    'Uploading memories... ✓',
+    'Uploading adventures... ✓',
+    'Uploading kisses... ✓',
+    'Uploading dreams... ✓',
+    'Uploading love... ✓',
+    '',
+    '❤️ MARRIAGE vNEXT DEPLOYED',
+  ];
+
+  deployLog.innerHTML = '';
+  finalMessage.classList.add('hidden');
+  deployLog.classList.remove('hidden');
+  let index = 0;
+  const timer = setInterval(() => {
+    const line = lines[index];
+    const row = document.createElement('div');
+    row.textContent = line;
+    deployLog.appendChild(row);
+    index += 1;
+    if (index >= lines.length) {
+      clearInterval(timer);
+      setTimeout(() => {
+        deployLog.classList.add('hidden');
+        finalMessage.classList.remove('hidden');
+      }, 700);
+    }
+  }, 420);
+});
