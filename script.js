@@ -63,7 +63,13 @@ let apiVisited = new Set();
 const screens = [...document.querySelectorAll('.screen')];
 const navDots = [...document.querySelectorAll('.nav-dot')];
 
+const missionState = { wifeDiagnosticsUnlocked: false, giftRevealed: false, deployed: false };
+
 function goTo(id) {
+  // Hard-gate the final deployment: Level 05 must be completed first.
+  if (id === 'level-deployed' && !missionState.giftRevealed) {
+    id = 'level-wife';
+  }
   screens.forEach((screen) => screen.classList.toggle('active', screen.id === id));
   navDots.forEach((dot) => dot.classList.toggle('active', dot.dataset.target === id));
   currentScreen = id;
@@ -197,7 +203,10 @@ document.querySelectorAll('.endpoint').forEach((button) => {
 
 document.getElementById('apiContinueBtn').addEventListener('click', () => goTo('level-final'));
 
-document.getElementById('deployBtn').addEventListener('click', () => goTo('level-wife'));
+document.getElementById('wifeDiagnosticsBtn').addEventListener('click', () => {
+  missionState.wifeDiagnosticsUnlocked = true;
+  goTo('level-wife');
+});
 
 // WIFE SYSTEM DIAGNOSTICS
 const wifeAnswers = {
@@ -292,11 +301,15 @@ nextClueBtn.addEventListener('click', () => {
     setTimeout(() => {
       finalClue.classList.add('hidden');
       giftReveal.classList.remove('hidden');
+      missionState.giftRevealed = true;
     }, 1800);
   }
 });
 
-continueDeployBtn.addEventListener('click', () => goTo('level-deployed'));
+continueDeployBtn.addEventListener('click', () => {
+  missionState.deployed = true;
+  goTo('level-deployed');
+});
 
 
 
