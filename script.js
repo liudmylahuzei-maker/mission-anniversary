@@ -314,15 +314,13 @@ continueDeployBtn.addEventListener('click', () => {
 
 
 // FINAL DEPLOYMENT
-const deployBtn = document.getElementById('deployBtn');
 const finalProgress = document.getElementById('finalProgress');
 const deployLog = document.getElementById('deployLog');
 const finalMessage = document.getElementById('finalMessage');
 
-deployBtn.addEventListener('click', () => {
+function runDeployment() {
   goTo('level-deployed');
-  finalProgress.style.width = '100%';
-  deployBtn.disabled = true;
+  if (finalProgress) finalProgress.style.width = '100%';
 
   const lines = [
     '🚀 Deploying...',
@@ -353,4 +351,14 @@ deployBtn.addEventListener('click', () => {
       }, 700);
     }
   }, 420);
+}
+
+// Deployment can ONLY be started after the gift reveal.
+continueDeployBtn.addEventListener('click', () => {
+  if (!missionState.giftRevealed) {
+    goTo('level-wife');
+    return;
+  }
+  missionState.deployed = true;
+  runDeployment();
 });
